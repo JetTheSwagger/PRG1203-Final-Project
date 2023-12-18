@@ -28,4 +28,9 @@ public class Score {
     public int getScore(){
         return score;
     }
+    
+    //method
+    public void calculateScore(int damage, int catchBonus){
+        score=damage*123+catchBonus*1000;
+    }
 }

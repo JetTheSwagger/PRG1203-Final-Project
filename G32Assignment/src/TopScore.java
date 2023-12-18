@@ -1,7 +1,8 @@
-import java.util.Arrays;
+import java.util.*;
+import java.lang.*;
 
 public class TopScore {
-    private Score topScore[]=new Score[5];
+    private Score[] topScore;
 
     //Constructor
     public TopScore(){
@@ -14,17 +15,26 @@ public class TopScore {
 
     //Add Score Method
     public void addScore(Score s){
-        for (int i=0;i<topScore.length;i++){
-            if(topScore[i]==null){
-                topScore[i]=s;
+        for (int i=topScore.length;i<0;i++){
+            if(topScore[i].getScore()<s.getScore()){
+                topScore[i]=s;;
+
+                Arrays.sort(topScore);
                 break;
             }
         }
         Arrays.sort(topScore);
     }
 
-    //Update Score Method
-    public void updateScore(){
-        
+    //
+    public String toString(){
+        StringBuilder result=new StringBuilder("TopScore [");
+        for (Score score:topScore){
+            if (score !=null){
+                result.append(score).append(", ");
+            }
+        }
+        result.append("]");
+        return result.toString();
     }
 }
