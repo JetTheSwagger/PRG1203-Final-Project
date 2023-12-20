@@ -1,37 +1,64 @@
 import java.util.*;
-import java.lang.*;
 
 public class TopScore {
-    private Score[] topScore;
+    //private Score[] topScore;
+    private ArrayList<Score> topScore=new ArrayList<>();
 
     //Constructor
     public TopScore(){
     }
 
-    //Score s represnt the array of score that will be read in the main program
-    public TopScore(Score s[]){
-        topScore=s;
+    //1 score
+        public TopScore(Score s1){
+        topScore.add(s1);
+    }
+
+    //2 scores
+    public TopScore(Score s1, Score s2){
+        topScore.add(s1);
+        topScore.add(s2);
+    }
+
+    //3 scores
+        public TopScore(Score s1, Score s2,Score s3){
+        topScore.add(s1);
+        topScore.add(s2);
+        topScore.add(s3);
+    }
+
+    //4 scores
+        public TopScore(Score s1, Score s2,Score s3,Score s4){
+        topScore.add(s1);
+        topScore.add(s2);
+        topScore.add(s3);
+        topScore.add(s4);
+    }
+
+    //5 scores
+    public TopScore(Score s1, Score s2,Score s3,Score s4,Score s5){
+        topScore.add(s1);
+        topScore.add(s2);
+        topScore.add(s3);
+        topScore.add(s4);
+        topScore.add(s5);
     }
 
     //Add Score Method
     public void addScore(Score s){
-        for (int i=topScore.length;i<0;i++){
-            if(topScore[i].getScore()<s.getScore()){
-                topScore[i]=s;;
-
-                Arrays.sort(topScore);
-                break;
-            }
+        topScore.add(s);
+        Collections.sort(topScore,Collections.reverseOrder());
+        if(topScore.size()>5){          
+            int index=topScore.size()-1;
+            topScore.remove(index);
         }
-        Arrays.sort(topScore);
     }
 
-    //
+    //toString
     public String toString(){
-        StringBuilder result=new StringBuilder("TopScore [");
+        StringBuilder result=new StringBuilder("TopScore \n");
         for (Score score:topScore){
             if (score !=null){
-                result.append(score).append(", ");
+                result.append(score).append("\n\n");
             }
         }
         result.append("]");

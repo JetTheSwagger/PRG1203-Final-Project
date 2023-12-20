@@ -1,4 +1,4 @@
-public class Score {
+public class Score implements Comparable<Score> {
     private String name;
     private int score;
 
@@ -32,5 +32,17 @@ public class Score {
     //method
     public void calculateScore(int damage, int catchBonus){
         score=damage*123+catchBonus*1000;
+    }
+
+    //comparble interface implementaion, for arrays.sort
+    @Override
+    public int compareTo(Score otherScore) {
+        return Integer.compare(this.score, otherScore.score);
+    }
+
+
+    //public get
+    public String toString(){
+        return "Name: "+name+"\nScore: "+score;
     }
 }
